@@ -29,11 +29,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install ansible-lint
-      #
+      
       # Gaurd allows Ansible to pass validation if there are no commands, needed for early testing
       # This should have no effect once Ansbile commands are developed
-      if: hashFiles('ansible/**/*.yml') != ''
+        if: hashFiles('ansible/**/*.yml') != ''
         run: pip install ansible-lint
       - name: Lint playbooks
-      if: hashFiles('ansible/**/*.yml') != ''
+        if: hashFiles('ansible/**/*.yml') != ''
         run: ansible-lint ansible/
