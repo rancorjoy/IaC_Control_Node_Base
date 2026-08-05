@@ -1,0 +1,34 @@
+name: Validate IaC
+
+# Trigger Condition: Runs when commits land on main (i.e. after a PR merges, since direct pushes are now blocked)
+# Runs on PR open, and again on every new commit pushed to the PR
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Job definitions, opentofu and ansible check their respective directories
+# Ensures each system is syntactically valid before a PR is allowed to merge
+jobs:
+  opentofu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: opentofu/setup-opentofu@v1
+      - name: tofu fmt check
+        run: tofu fmt -check -recursive opentofu/
+      - name: tofu init
+        run: tofu init -backend=false
+        working-directory: opentofu
+      - name: tofu validate
+        run: tofu validate
+        working-directory: opentofu
+
+  ansible:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ansible-lint
+        run: pip install ansible-lint
+      - name: Lint playbooks
+        run: ansible-lint ansible/
