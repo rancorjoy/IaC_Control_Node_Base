@@ -1,0 +1,12 @@
+# hosts.yml - list of worker machines to be provisioned by this IaC deployment
+# All hosts should be seeded from an ISO produced by the following repo:
+# https://github.com/rancorjoy/IaC_Debian_Server_Base
+
+# All hosts should be listed with the information shown below.
+# A unique key file name should be specified for each host, the user DOES NOT supply this file
+
+hosts:
+  - name: Debian-Server-0
+    ip_adress: 192.168.0.0
+    ssh_port: 22
+    key_file: Debian-Server-0.key   # relative to vars/private/

@@ -5,7 +5,12 @@
 .env.local
 .env.backup
 
-ansible/roles/hardening/keys/authorized_keys
+# Directories
+vars/private
+vars/public
+vars/hosts.yml
+vars/targets.yml
+
 
 # Build and Compilation Artifacts
 dist/
@@ -31,5 +36,4 @@ Thumbs.db
 *.swp
 
 # OpenTofu
-
 opentofu/terraform.tfstate

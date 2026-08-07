@@ -1,0 +1,14 @@
+# targets.yml - list of Web-App projects that should be provisioned by this IaC deployment
+# All targets should be structured as shown in this template repo:
+# https://github.com/rancorjoy/Web_App_Template
+
+targets:
+  - repo: https://github.com/rancorjoy/Web_App_Template
+
+# For private repositories, create a variable in env for the corresponding key
+# Add this key to the target as shown below:
+
+#  - repo: https://github.com/private_repo
+#    token_env: PRIVATE_KEY_1
+
+# In this case there should be an env variable "PRIVATE_KEY_1" = key
