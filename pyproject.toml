@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "dotenv>=0.9.9",
+    "path>=17.1.1",
+]
 
 [project.scripts]
 iac-control-node-base = "iac_control_node_base:main"
